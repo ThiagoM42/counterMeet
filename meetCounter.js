@@ -4,6 +4,7 @@ class countDown{
 		this.el_li = el_li_	
 		console.log(this.el_li)		
 		this.participantes =  document.querySelector(`.${this.el_ul}`)	
+		this.pegarParticipantes(this.el_li);
 		this.observer(this.el_ul, this.el_li)
 	}
 	pegarParticipantes(li){
@@ -16,9 +17,8 @@ class countDown{
 
 		participantes_ = Array.from(participantes_).map(participante => participante.innerText)	
 		let local = participantes_.filter(participante=>{
-			if (!(JSON.parse(localStorage.getItem('participantes')).includes(participante)) && (participante!=="")){
-				console.log("Participantes desse momento "+Date(Date.now()))
-				console.log(participante)
+			if (!(JSON.parse(localStorage.getItem('participantes')).includes(participante)) && (participante!=="")){				
+				console.log(`${participante} entrou as `+Date(Date.now()))
 				return participante;
 			}				
 		})
